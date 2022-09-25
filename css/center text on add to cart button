@@ -1,0 +1,9 @@
+.woocommerce ul.products li.product .button {
+	text-align: center;
+	margin: auto;
+	width: 100%; 
+}
+.woocommerce .products .product,
+.woocommerce .products .product .price {
+	 text-align:center
+}
