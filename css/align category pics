@@ -1,0 +1,5 @@
+body.archive.tax-product_cat div#product_wrapper {
+    height: auto !important;
+    display: flex;
+    flex-wrap: wrap;
+}
