@@ -1,0 +1,4 @@
+table.cart td.product-quantity .qty {
+    padding: 0.326em;
+    width: 3.706325903em;
+}
