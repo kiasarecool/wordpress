@@ -1,0 +1,6 @@
+.woocommerce div.product form.cart div.quantity, .woocommerce button.button {
+	display: flex;
+	justify-content: center;
+	margin: auto;
+	float: none;
+}
