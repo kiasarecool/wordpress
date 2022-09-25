@@ -1,0 +1,9 @@
+// The data of the new custom column in admin order list
+add_action( 'manage_shop_order_posts_custom_column' , 'orders_list_column_payment_title', 10, 2 );
+function orders_list_column_payment_title( $column, $post_id ){
+    if( 'payment_method' === $column ){
+        $payment_title = get_post_meta( $post_id, '_payment_method_title', true );
+        if( ! empty($payment_title) )
+            echo $payment_title;
+    }
+}
