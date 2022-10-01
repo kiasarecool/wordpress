@@ -9,6 +9,3 @@ function change_shipping_text($text) {
     $text = str_ireplace('Shipping','Drop Charge & Fuel, Fuel Only or Pickup',$text);
     return $text;
 }
-function wc_cancelled_order_add_customer_email( $recipient, $order ){
-     return $recipient . ',' . $order->billing_email;
- }
