@@ -1,0 +1,3 @@
+function wc_cancelled_order_add_customer_email( $recipient, $order ){
+     return $recipient . ',' . $order->billing_email;
+ }
