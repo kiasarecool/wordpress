@@ -30,7 +30,7 @@ add_action('woocommerce_review_order_before_payment', function() {
     ?><script type="text/javascript">
         (function($){
             $('form.checkout').on('change', 'input[name^="payment_method"]', function() {
-                $('body').trigger('update_checkout');
+                $('body').trigger('update_checkout').trigger('wc_fragment_refresh');
             });
         })(jQuery);
     </script><?php
