@@ -1,3 +1,4 @@
+<?php
 // Credit Card Fee
 add_action( 'woocommerce_cart_calculate_fees', 'cc_fee' );
 function cc_fee ( $cart ) {
@@ -18,7 +19,6 @@ function cc_fee ( $cart ) {
 		'google_pay' => ( 4 * $subtotal / 100 + 0.30 ) + ( 4 * $shipping_total /100 ),
         'woocommerce_payments' => ( 4 * $subtotal / 100 + 0.30 ) + ( 4 * $shipping_total /100 ) , // Card fee
     );
-
     // Loop through defined payment Ids array
     foreach ( $targeted_payment_ids as $payment_id => $fee_cost ) {
         if ( $chosen_payment_id === $payment_id ) {
@@ -26,6 +26,8 @@ function cc_fee ( $cart ) {
         }
     }
 }
+
+//refresh totals when payment method changes 
 add_action('woocommerce_review_order_before_payment', function() {
     ?><script type="text/javascript">
         (function($){

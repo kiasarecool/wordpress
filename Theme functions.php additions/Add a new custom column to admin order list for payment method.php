@@ -1,5 +1,6 @@
+<?php
 // Add a new custom column to admin order list for payment method
-add_filter( 'manage_edit-shop_order_columns', 'add_payment_shop_order_column',11);
+add_filter( 'manage_edit-shop_order_columns', 'add_payment_shop_order_column', 11);
 function add_payment_shop_order_column($columns) {
     $reordered_columns = array();
 
