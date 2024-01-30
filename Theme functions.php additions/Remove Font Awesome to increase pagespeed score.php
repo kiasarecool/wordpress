@@ -1,14 +1,14 @@
 <?php
 
 //Remove Font Awesome from WordPress theme to increase pagespeed score
-add_action( 'wp_print_styles', 'tn_dequeue_font_awesome_style' );
-function tn_dequeue_font_awesome_style() {
+add_action( 'wp_print_styles', 'kias_dequeue_font_awesome_style' );
+function kias_dequeue_font_awesome_style() {
       wp_dequeue_style( 'fontawesome' );
       wp_deregister_style( 'fontawesome' );
 }
 
 
-//Remove FA icons to increase pagespeed score
+//Remove dashicoin icons to increase pagespeed score
 function wpdocs_dequeue_dashicon() {
     
         if (current_user_can( 'update_core' )) {

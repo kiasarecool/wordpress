@@ -1,6 +1,10 @@
 <?php
+// use with free plugin 'ajax add to cart' for best results!
+// majorly reduces abandonment by removing all page reloads/ redirects
+// during the cart filling stage & allows adding of more than 1 at a time form 
+// shop archive / category pages
 
-// Add qty selector to shop archive page 
+// add qty selector to shop archive page 
 add_filter( 'woocommerce_loop_add_to_cart_link', 'quantity_inputs_for_loop_ajax_add_to_cart', 10, 2 );
 function quantity_inputs_for_loop_ajax_add_to_cart( $html, $product ) {
     if ( $product && $product->is_type( 'simple' ) && $product->is_purchasable() && $product->is_in_stock() && ! $product->is_sold_individually() ) {
@@ -26,7 +30,7 @@ function quantity_inputs_for_loop_ajax_add_to_cart( $html, $product ) {
     }
     return $html;
 }
-// lets make that qty selector actually work too
+ //  make that qty selector actually work too
 add_action( 'wp_footer' , 'archives_quantity_fields_script' );
 function archives_quantity_fields_script(){
     //if( is_shop() || is_product_category() || is_product_tag() ): ?>
@@ -40,8 +44,7 @@ function archives_quantity_fields_script(){
             $( this ).parent( '.quantity' ).next( '.add_to_cart_button' ).attr( 'data-quantity', $( this ).val() );
             //alert("Changed");
         });
-    });
-        
+    });  
         jQuery(function($) {
             // Update quantity on 'a.button' in 'data-quantity' attribute (for ajax) 
             $(".add_to_cart_button.product_type_simple").on('click', function() {
@@ -54,5 +57,6 @@ function archives_quantity_fields_script(){
             });
         });
     </script>
-    <?php //endif;
+    <?php 
+    //endif;
 }
