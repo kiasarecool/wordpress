@@ -1,5 +1,4 @@
 <?php
-
 // Generate Dynamic log in/out button
 add_filter('wp_nav_menu_items', 'float_login_logout', 10, 2);
 function float_login_logout($items, $args) {

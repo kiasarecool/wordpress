@@ -1,13 +1,15 @@
 <?php
 
+// first (or second) make a discount code on woo that is set to percentage at 0%, 
+// add exp date, 
 
 //     Custom scaling percentage discounts based on cart subtotal     ///////////////////////////////////
 add_action( 'woocommerce_cart_calculate_fees', 'discount_based_on_cart_total_and_codes', 10, 1 );
 function discount_based_on_cart_total_and_codes( $cart_object ) {
     if ( is_admin() && ! defined( 'DOING_AJAX' ) )
         return;
-    // Array of matching coupon codes
-    $coupon_codes = ['nonexist', 'holiday2', 'holiday'];
+    // Array of matching coupon codes change these to your created coupon codes 
+    $coupon_codes = ['code1', '123coupon-code', 'spendmore-savemore'];
     // Check if any of our specific coupon codes are applied
     $coupon_applied = false;
     foreach ( $coupon_codes as $code ) {
