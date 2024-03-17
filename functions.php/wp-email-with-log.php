@@ -1,14 +1,14 @@
 <?php
-// Include WooCommerce logging for email activities
+// email + logging
 function kiasarecool_log_email_activity($to, $subject, $result) {
     $logger = wc_get_logger();
-    $context = array('source' => 'kiasarecool-emails'); // Tagging logs with 'kiasarecool'
+    $context = array('source' => 'kiasarecool-emails'); 
 
     $log_message = sprintf(
         "[%s] %s - To: %s, Subject: %s",
         date('Y-m-d H:i:s'),
         ($result ? 'SUCCESS' : 'FAILURE'),
-        implode(', ', (array) $to), // Ensure $to is treated as an array and implode for logging.
+        implode(', ', (array) $to), 
         $subject
     );
 
@@ -18,8 +18,6 @@ function kiasarecool_log_email_activity($to, $subject, $result) {
         $logger->error($log_message, $context);
     }
 }
-
-// Adjust your PHPMailer configuration and add logging on email sent
 
 add_action('phpmailer_init', 'kiasarecool_phpmailer_configuration_with_logging');
 function kiasarecool_phpmailer_configuration_with_logging($phpmailer) {
@@ -33,12 +31,13 @@ function kiasarecool_phpmailer_configuration_with_logging($phpmailer) {
     $phpmailer->setFrom('Email@YOUR_SITE.com', 'PRETTY BUSINESS NAME (FROM NAME)');
     $phpmailer->addReplyTo('SAMEOorDIFFRENT@YOUR_SITE.com', 'PRETTY BUSINESS NAME (REPLY TO NAME)');
 
-    // Add post-send logging using the PHPMailer action_function with a callback
+    // post-send callback
     $phpmailer->action_function = function ($result, $to, $cc, $bcc, $subject, $body) {
         kiasarecool_log_email_activity($to, $subject, $result);
     };
 }
 /*
-	•	Logging Source Tag: The log source is tagged as 'kiasarecool-emails', making it easy to identify your email logs within the WooCommerce System Status > Logs interface.
-  • I have not had a chance to test this yet, by all means, it should work fine, but use with caution, and be ready to roll back!
+  • View logs -> WooCommerce > Status > Logs 
+  • look for 'kiasarecool-emails'
+ALPHA VERSION 0.0.1 -  USE AT OWN RISK I have not had a chance to test this yet, by all means, it should work fine, but use with caution, and be ready to roll back!
 */
